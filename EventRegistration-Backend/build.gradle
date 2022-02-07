@@ -4,9 +4,9 @@ plugins {
 	id 'java'
 }
 
-group = 'mcgill.ecse321'
+group = 'ca.mcgill.ecse321'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '17'
+sourceCompatibility = '17.0'
 
 repositories {
 	mavenCentral()
