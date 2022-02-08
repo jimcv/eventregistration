@@ -1,0 +1,42 @@
+class RegistrationManager
+{
+}
+
+class Person
+{
+  name;
+}
+
+class Event
+{
+  name;
+  Date eventDate;
+  Time startTime;
+  Time endTime;
+}
+
+class Registration
+{
+  Integer id;
+  }
+
+association {
+    1 RegistrationManager registrationManager <@>- 0..* Registration registrations;
+}
+
+association {
+    1 RegistrationManager registrationManager <@>- 0..* Event events;
+}
+
+association {
+    1 RegistrationManager registrationManager <@>- 0..* Person persons;
+}
+
+association {
+   0..* Registration registration ->  1 Event event ;
+}
+
+
+association {
+    0..* Registration registration ->  1 Person person;
+}
