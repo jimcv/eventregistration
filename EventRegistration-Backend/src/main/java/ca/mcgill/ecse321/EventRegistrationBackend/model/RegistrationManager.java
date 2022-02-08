@@ -8,8 +8,9 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class RegistrationManager {
+  // Composition: Person
   private Set<Person> persons;
-
+  // cascade: used for compositions
   @OneToMany(cascade = {CascadeType.ALL})
   public Set<Person> getPersons() {
     return this.persons;
@@ -19,6 +20,7 @@ public class RegistrationManager {
     this.persons = personss;
   }
 
+  // Composition: Registration
   private Set<Registration> registrations;
 
   @OneToMany(cascade = {CascadeType.ALL})
@@ -30,6 +32,7 @@ public class RegistrationManager {
     this.registrations = registrationss;
   }
 
+  // Composition: Event
   private Set<Event> events;
 
   @OneToMany(cascade = {CascadeType.ALL})
@@ -41,6 +44,7 @@ public class RegistrationManager {
     this.events = eventss;
   }
 
+  // Primary key
   private int id;
 
   public void setId(int value) {
