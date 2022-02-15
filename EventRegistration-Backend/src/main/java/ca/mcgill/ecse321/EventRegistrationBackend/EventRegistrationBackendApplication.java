@@ -18,4 +18,11 @@ public class EventRegistrationBackendApplication {
     return "Hello world!";
   }
 
+  @RequestMapping("/time")
+  public String getCurrentTime() {
+    long millis = System.currentTimeMillis();
+    java.sql.Date date = new java.sql.Date(millis);
+    return date.toString();
+  }
+
 }
