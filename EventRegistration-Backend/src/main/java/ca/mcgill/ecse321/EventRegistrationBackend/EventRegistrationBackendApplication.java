@@ -1,5 +1,7 @@
 package ca.mcgill.ecse321.EventRegistrationBackend;
 
+import java.sql.Date;
+import java.sql.Time;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,14 +17,11 @@ public class EventRegistrationBackendApplication {
 
   @RequestMapping("/")
   public String greeting() {
-    return "Hello world!";
-  }
-
-  @RequestMapping("/time")
-  public String getCurrentTime() {
     long millis = System.currentTimeMillis();
-    java.sql.Date date = new java.sql.Date(millis);
-    return date.toString();
+    Date date = new java.sql.Date(millis);
+    Time time = new java.sql.Time(millis);
+    return "<h1>Welcome!</h1> <h2>The current system time is: " + date.toString() + " "
+        + time.toString() + "</h2>";
   }
 
 }
