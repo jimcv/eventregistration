@@ -20,8 +20,8 @@ public class EventRegistrationBackendApplication {
     long millis = System.currentTimeMillis();
     Date date = new java.sql.Date(millis);
     Time time = new java.sql.Time(millis);
-    return "<h1>Welcome!</h1> <h2>The current system time is: " + date.toString() + " "
-        + time.toString() + "</h2>";
+    return "<h1>Welcome to the grocery store!</h1> <h2>The current system time is: "
+        + date.toString() + " " + time.toString() + "</h2>";
   }
 
 }
