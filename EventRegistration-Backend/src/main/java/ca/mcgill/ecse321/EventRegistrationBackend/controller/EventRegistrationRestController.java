@@ -61,10 +61,10 @@ public class EventRegistrationRestController {
   }
 
   @PostMapping(value = {"/register", "/register/"})
-  public RegistrationDto registerPersonForEvent(@RequestParam(name = "person") PersonDto pDto,
-      @RequestParam(name = "event") EventDto eDto) throws IllegalArgumentException {
-    Person p = service.getPerson(pDto.getName());
-    Event e = service.getEvent(eDto.getName());
+  public RegistrationDto registerPersonForEvent(@RequestParam String pname,
+      @RequestParam String ename) throws IllegalArgumentException {
+    Person p = service.getPerson(pname);
+    Event e = service.getEvent(ename);
 
     Registration r = service.register(p, e);
     return convertToDto(r, p, e);
