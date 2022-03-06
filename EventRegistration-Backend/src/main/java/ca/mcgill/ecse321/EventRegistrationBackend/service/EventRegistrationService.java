@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,7 +27,7 @@ public class EventRegistrationService {
 
   @Transactional
   public Person createPerson(String name) {
-    if (name == null || name.trim().length() == 0) {
+    if (StringUtils.isBlank(name)) {
       throw new IllegalArgumentException("Person name cannot be empty!");
     }
     Person person = new Person();
@@ -37,7 +38,7 @@ public class EventRegistrationService {
 
   @Transactional
   public Person getPerson(String name) {
-    if (name == null || name.trim().length() == 0) {
+    if (StringUtils.isBlank(name)) {
       throw new IllegalArgumentException("Person name cannot be empty!");
     }
     Person person = personRepository.findPersonByName(name);
