@@ -30,9 +30,9 @@ module.exports = {
   dev: {
     env: require('./dev.env'),
     // tutorial setup
-    host: '127.0.0.1',
+    host: 'localhost',
     port: 8087,
-    backendHost: '127.0.0.1',
+    backendHost: 'localhost',
     backendPort: 8080,
     // end tutorial setup
     autoOpenBrowser: true,
