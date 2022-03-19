@@ -69,7 +69,9 @@ var staticPath = path.posix.join(
 );
 app.use(staticPath, express.static("./static"));
 
-var uri = "http://localhost:" + port;
+// var uri = "http://localhost:" + port;
+var host = config.dev.host;
+var uri = "http://" + host + ":" + port;
 
 var _resolve;
 var readyPromise = new Promise((resolve) => {
