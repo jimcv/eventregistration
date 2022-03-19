@@ -40,19 +40,19 @@ export default {
   created: function () {
     // Initializing persons from backend
     AXIOS.get("/persons")
-      .then((response) => {
+      .then(response => {
         // JSON responses are automatically parsed.
         this.persons = response.data;
       })
-      .catch((e) => {
+      .catch(e => {
         this.errorPerson = e;
       });
     // Initializing events
     AXIOS.get("/events")
-      .then((response) => {
+      .then(response => {
         this.events = response.data;
       })
-      .catch((e) => {
+      .catch(e => {
         this.errorEvent = e;
         // this.errors.push(e)
       });
@@ -60,13 +60,13 @@ export default {
   methods: {
     createPerson: function (personName) {
       AXIOS.post("/persons/".concat(personName), {}, {})
-        .then((response) => {
+        .then(response => {
           // JSON responses are automatically parsed.
           this.persons.push(response.data);
           this.errorPerson = "";
           this.newPerson = "";
         })
-        .catch((e) => {
+        .catch(e => {
           var errorMsg = e.response.data.message;
           console.log(errorMsg);
           this.errorPerson = errorMsg;

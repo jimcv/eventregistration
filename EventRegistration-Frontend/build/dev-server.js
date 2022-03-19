@@ -74,7 +74,7 @@ var host = config.dev.host;
 var uri = "http://" + host + ":" + port;
 
 var _resolve;
-var readyPromise = new Promise((resolve) => {
+var readyPromise = new Promise(resolve => {
   _resolve = resolve;
 });
 
