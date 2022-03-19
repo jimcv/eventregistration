@@ -1,22 +1,22 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Hello from '@/components/Hello'
+import Vue from "vue";
+import Router from "vue-router";
+import Hello from "@/components/Hello";
 // added components
-import EventRegistration from '@/components/EventRegistration'
+import EventRegistration from "@/components/EventRegistration";
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
   routes: [
     {
-      path: '/',
-      name: 'Hello',
-      component: Hello
+      path: "/",
+      name: "Hello",
+      component: Hello,
     },
     {
-      path: '/app',
-      name: 'EventRegistration',
-      component: EventRegistration
-    }
-  ]
-})
+      path: "/app",
+      name: "EventRegistration",
+      component: EventRegistration,
+    },
+  ],
+});

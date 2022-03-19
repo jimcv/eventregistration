@@ -33,8 +33,7 @@
   </div>
 </template>
 
-<script src="./registration.js">
-</script>
+<script src="./registration.js"></script>
 
 <style scoped>
 #eventregistration {
