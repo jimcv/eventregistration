@@ -26,9 +26,7 @@
       </tr>
     </table>
     <p>
-      <span v-if="errorPerson" style="color: red"
-        >Error: {{ errorPerson }}</span
-      >
+      <span v-if="errorPerson" style="color: red">{{ errorPerson }}</span>
     </p>
   </div>
 </template>
