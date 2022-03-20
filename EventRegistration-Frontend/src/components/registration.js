@@ -67,7 +67,7 @@ export default {
           this.newPerson = "";
         })
         .catch(e => {
-          var errorMsg = e.response.data.message;
+          let errorMsg = e.response.data.message;
           console.log(errorMsg);
           this.errorPerson = errorMsg;
         });
