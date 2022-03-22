@@ -22,6 +22,7 @@
           <button v-bind:disabled="!newPerson" @click="createPerson(newPerson)">
             Create Person
           </button>
+          <b-button @click="testStates()">Try Vuex States</b-button>
         </td>
       </tr>
     </table>
