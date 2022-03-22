@@ -40,6 +40,9 @@
       v-bind:disabled="!LOGIN_STATE.state.isLoggedIn"
       >Log Out Test
     </b-button>
+    <b-button variant="danger" @click="clearLocalStorage()"
+      >Clear Local Storage
+    </b-button>
   </div>
 </template>
 
@@ -57,6 +60,10 @@ export default {
   methods: {
     logout: function () {
       LOGIN_STATE.commit("logout");
+    },
+    clearLocalStorage: function () {
+      window.localStorage.clear();
+      window.location.reload();
     },
   },
 };

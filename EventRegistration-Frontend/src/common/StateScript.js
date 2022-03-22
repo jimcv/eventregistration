@@ -1,9 +1,18 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import persistedState from "vuex-persistedstate";
 
 Vue.use(Vuex);
 
+// sessionStorage clears on new tab, localStorage never expires
+
 export const COUNT_STATE = new Vuex.Store({
+  plugins: [
+    persistedState({
+      key: "vuex-count-state",
+      storage: window.localStorage,
+    }),
+  ],
   state: {
     count: 0,
   },
@@ -15,6 +24,12 @@ export const COUNT_STATE = new Vuex.Store({
 });
 
 export const LOGIN_STATE = new Vuex.Store({
+  plugins: [
+    persistedState({
+      key: "vuex-login-state",
+      storage: window.localStorage,
+    }),
+  ],
   state: {
     isLoggedIn: false,
     userType: "",
