@@ -49,6 +49,20 @@ export default {
   },
   methods: {
     createPerson: function (personName) {
+      AXIOS.post("/persons/".concat(personName), {}, {})
+        .then(response => {
+          // JSON responses are automatically parsed.
+          this.persons.push(response.data);
+          this.errorPerson = "";
+          this.newPerson = "";
+        })
+        .catch(e => {
+          let errorMsg = e.response.data.message;
+          console.log(errorMsg);
+          this.errorPerson = errorMsg;
+        });
+    },
+    testStates: function () {
       COUNT_STATE.commit("increment");
       if (LOGIN_STATE.state.isLoggedIn === false) {
         LOGIN_STATE.commit("login");
