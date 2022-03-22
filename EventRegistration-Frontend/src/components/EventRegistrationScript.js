@@ -1,4 +1,5 @@
 import { AXIOS } from "../common/AxiosScript";
+import { COUNT_STATE } from "../common/StateScript";
 
 function PersonDto(name) {
   this.name = name;
@@ -22,11 +23,11 @@ export default {
       response: [],
       // event
       events: [],
-      errorEvent: "",
+      errorEvent: ""
     };
   },
   // upon creation, do something
-  created: function () {
+  created: function() {
     // Initializing persons from backend
     AXIOS.get("/persons")
       .then(response => {
@@ -47,19 +48,9 @@ export default {
       });
   },
   methods: {
-    createPerson: function (personName) {
-      AXIOS.post("/persons/".concat(personName), {}, {})
-        .then(response => {
-          // JSON responses are automatically parsed.
-          this.persons.push(response.data);
-          this.errorPerson = "";
-          this.newPerson = "";
-        })
-        .catch(e => {
-          let errorMsg = e.response.data.message;
-          console.log(errorMsg);
-          this.errorPerson = errorMsg;
-        });
-    },
-  },
+    createPerson: function(personName) {
+      COUNT_STATE.commit("increment");
+      console.log(COUNT_STATE.state.count);
+    }
+  }
 };
