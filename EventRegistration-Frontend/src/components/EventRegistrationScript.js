@@ -88,7 +88,7 @@ export default {
           this.errorEvent = "";
         })
         .catch(e => {
-          let errorMsg = e.response.data.error;
+          let errorMsg = e.response.data.message;
           console.log(errorMsg);
           this.errorEvent = errorMsg;
         });
