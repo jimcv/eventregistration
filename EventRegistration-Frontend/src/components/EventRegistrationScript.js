@@ -1,4 +1,4 @@
-import { AXIOS } from "./axiosScript";
+import { AXIOS } from "../common/AxiosScript";
 
 function PersonDto(name) {
   this.name = name;

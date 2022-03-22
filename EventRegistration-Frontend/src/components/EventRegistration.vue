@@ -31,7 +31,7 @@
   </div>
 </template>
 
-<script src="./registration.js"></script>
+<script src="./EventRegistrationScript.js"></script>
 
 <style scoped>
 #eventregistration {
