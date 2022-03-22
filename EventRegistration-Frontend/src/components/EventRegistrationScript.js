@@ -24,6 +24,12 @@ export default {
       // event
       events: [],
       errorEvent: "",
+      newEvent: {
+        name: "",
+        eventDate: "2017-12-08",
+        startTime: "09:00",
+        endTime: "11:00",
+      },
     };
   },
   // upon creation, do something
@@ -44,7 +50,6 @@ export default {
       })
       .catch(e => {
         this.errorEvent = e;
-        // this.errors.push(e)
       });
   },
   methods: {
@@ -60,6 +65,28 @@ export default {
           let errorMsg = e.response.data.message;
           console.log(errorMsg);
           this.errorPerson = errorMsg;
+        });
+    },
+    createEvent: function (name, date, startTime, endTime) {
+      AXIOS.post(
+        "/events/".concat(name),
+        {},
+        {
+          params: {
+            date: date,
+            startTime: startTime,
+            endTime: endTime,
+          },
+        }
+      )
+        .then(response => {
+          this.events.push(response.data);
+          this.errorEvent = "";
+        })
+        .catch(e => {
+          let errorMsg = e.response.data.error;
+          console.log(errorMsg);
+          this.errorEvent = errorMsg;
         });
     },
     testStates: function () {

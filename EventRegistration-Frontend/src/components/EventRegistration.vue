@@ -29,6 +29,62 @@
     <p>
       <span v-if="errorPerson" style="color: red">{{ errorPerson }}</span>
     </p>
+
+    <hr />
+    <h2>Events</h2>
+    <table>
+      <tr>
+        <th>Event Name</th>
+        <th>Date</th>
+        <th>Start</th>
+        <th>End</th>
+        <!--<th>Edit</th>-->
+      </tr>
+      <tr v-for="event in events" v-bind:key="event.name">
+        <td>{{ event.name }}</td>
+        <td>{{ event.eventDate }}</td>
+        <td>{{ event.startTime }}</td>
+        <td>{{ event.endTime }}</td>
+        <!--<td>
+          <button v-on:click="updateEvent(event.name)">Edit</button>
+        </td>-->
+      </tr>
+      <tr>
+        <td>
+          <input type="text" v-model="newEvent.name" placeholder="Event Name" />
+        </td>
+        <td>
+          <input
+            type="date"
+            v-model="newEvent.eventDate"
+            placeholder="YYYY-MM-DD"
+          />
+        </td>
+        <td>
+          <input type="time" v-model="newEvent.startTime" placeholder="HH:mm" />
+        </td>
+        <td>
+          <input type="time" v-model="newEvent.endTime" placeholder="HH:mm" />
+        </td>
+        <td>
+          <button
+            v-bind:disabled="!newEvent.name"
+            v-on:click="
+              createEvent(
+                newEvent.name,
+                newEvent.eventDate,
+                newEvent.startTime,
+                newEvent.endTime
+              )
+            "
+          >
+            Create
+          </button>
+        </td>
+      </tr>
+    </table>
+    <span v-if="errorEvent" style="color: red">{{ errorEvent }}</span>
+    <hr />
   </div>
 </template>
 
