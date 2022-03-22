@@ -1,15 +1,4 @@
-import axios from "axios";
-
-const config = require("../../config");
-
-const frontendUrl = "http://" + config.dev.host + ":" + config.dev.port;
-const backendUrl =
-  "https://" + config.dev.backendHost + ":" + config.dev.backendPort;
-
-const AXIOS = axios.create({
-  baseURL: backendUrl,
-  headers: { "Access-Control-Allow-Origin": frontendUrl },
-});
+import { AXIOS } from "./axiosScript";
 
 function PersonDto(name) {
   this.name = name;
