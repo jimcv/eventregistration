@@ -23,11 +23,11 @@ export default {
       response: [],
       // event
       events: [],
-      errorEvent: ""
+      errorEvent: "",
     };
   },
   // upon creation, do something
-  created: function() {
+  created: function () {
     // Initializing persons from backend
     AXIOS.get("/persons")
       .then(response => {
@@ -48,7 +48,7 @@ export default {
       });
   },
   methods: {
-    createPerson: function(personName) {
+    createPerson: function (personName) {
       COUNT_STATE.commit("increment");
       if (LOGIN_STATE.state.isLoggedIn === false) {
         LOGIN_STATE.commit("login");
@@ -57,6 +57,6 @@ export default {
       }
       console.log(COUNT_STATE.state.count);
       console.log(LOGIN_STATE.state.isLoggedIn);
-    }
-  }
+    },
+  },
 };

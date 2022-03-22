@@ -13,22 +13,22 @@ export default new Router({
     {
       path: "/",
       name: "Hello",
-      component: Hello
+      component: Hello,
     },
     {
       path: "/app",
       name: "EventRegistration",
-      component: EventRegistration
+      component: EventRegistration,
     },
     {
       path: "/apptest",
       name: "youcanputwhatevernamehere",
-      component: AppTest
+      component: AppTest,
     },
     {
       path: "/login",
       name: "test login form",
-      component: LoginForm
-    }
-  ]
+      component: LoginForm,
+    },
+  ],
 });

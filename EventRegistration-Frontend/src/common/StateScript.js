@@ -5,20 +5,20 @@ Vue.use(Vuex);
 
 export const COUNT_STATE = new Vuex.Store({
   state: {
-    count: 0
+    count: 0,
   },
   mutations: {
     increment(state) {
       state.count++;
-    }
-  }
+    },
+  },
 });
 
 export const LOGIN_STATE = new Vuex.Store({
   state: {
     isLoggedIn: false,
     userType: "",
-    username: ""
+    username: "",
   },
   mutations: {
     login(state) {
@@ -26,6 +26,6 @@ export const LOGIN_STATE = new Vuex.Store({
     },
     logout(state) {
       state.isLoggedIn = false;
-    }
-  }
+    },
+  },
 });

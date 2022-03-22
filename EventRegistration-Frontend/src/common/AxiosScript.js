@@ -2,21 +2,27 @@ import axios from "axios";
 
 const CONFIG = require("../../config");
 
-const BACKEND_URL = function() {
+const BACKEND_URL = function () {
   switch (process.env.NODE_ENV) {
     case "development":
       // use https if developing using hosted backend, else use http
       if (CONFIG.dev.backendHost === "eventreg-backend-100.herokuapp.com") {
-        return "https://" + CONFIG.dev.backendHost + ":" + CONFIG.dev.backendPort;
+        return (
+          "https://" + CONFIG.dev.backendHost + ":" + CONFIG.dev.backendPort
+        );
       } else {
-        return "http://" + CONFIG.dev.backendHost + ":" + CONFIG.dev.backendPort;
+        return (
+          "http://" + CONFIG.dev.backendHost + ":" + CONFIG.dev.backendPort
+        );
       }
     case "production":
-      return "https://" + CONFIG.build.backendHost + ":" + CONFIG.build.backendPort;
+      return (
+        "https://" + CONFIG.build.backendHost + ":" + CONFIG.build.backendPort
+      );
   }
 };
 
-const FRONTEND_URL = function() {
+const FRONTEND_URL = function () {
   switch (process.env.NODE_ENV) {
     case "development":
       return "http://" + CONFIG.dev.host + ":" + CONFIG.dev.port;
@@ -27,5 +33,5 @@ const FRONTEND_URL = function() {
 
 export const AXIOS = axios.create({
   baseURL: BACKEND_URL(),
-  headers: { "Access-Control-Allow-Origin": FRONTEND_URL() }
+  headers: { "Access-Control-Allow-Origin": FRONTEND_URL() },
 });
