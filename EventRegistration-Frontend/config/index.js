@@ -32,8 +32,9 @@ module.exports = {
     // tutorial setup
     host: "127.0.0.1",
     port: 8087,
-    backendHost: "127.0.0.1",
-    backendPort: 8080,
+    // use hosted backend as well for dev
+    backendHost: "eventreg-backend-100.herokuapp.com",
+    backendPort: 443,
     // end tutorial setup
     autoOpenBrowser: true,
     assetsSubDirectory: "static",
