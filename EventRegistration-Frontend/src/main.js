@@ -6,6 +6,7 @@ import App from "./App";
 import router from "./router";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
+import moment from "moment";
 
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
@@ -17,4 +18,22 @@ new Vue({
   router,
   template: "<App/>",
   components: { App },
+});
+
+Vue.filter("formatTime", function (value) {
+  if (value) {
+    return moment(String(value), "HH:mm:ss").format("hh:mm A");
+  }
+});
+
+Vue.filter("formatDate", function (value) {
+  if (value) {
+    return moment(String(value), "YYYY-MM-DD").format("MMMM Do, YYYY");
+  }
+});
+
+Vue.filter("formatCurrency", function (value) {
+  if (value) {
+    return (Math.round(value * 100) / 100).toFixed(2);
+  }
 });

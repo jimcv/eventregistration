@@ -30,6 +30,10 @@ export default {
         startTime: "09:00",
         endTime: "11:00",
       },
+      // register
+      selectedPerson: "",
+      selectedEvent: "",
+      errorRegistration: "",
     };
   },
   // upon creation, do something
@@ -87,6 +91,33 @@ export default {
           let errorMsg = e.response.data.error;
           console.log(errorMsg);
           this.errorEvent = errorMsg;
+        });
+    },
+    registerEvent: function (personName, eventName) {
+      AXIOS.post(
+        "/register",
+        {},
+        {
+          params: {
+            pname: personName,
+            ename: eventName,
+          },
+        }
+      )
+        .then(response => {
+          let indexOfPerson = this.persons.map(x => x.name).indexOf(personName);
+          let indexOfEvent = this.events.map(x => x.name).indexOf(eventName);
+          let person = this.persons[indexOfPerson];
+          let event = this.events[indexOfEvent];
+          person.events.push(event);
+          this.selectedPerson = "";
+          this.selectedEvent = "";
+          this.errorRegistration = "";
+        })
+        .catch(e => {
+          let errorMsg = e.response.data.message;
+          console.log(errorMsg);
+          this.errorRegistration = errorMsg;
         });
     },
     testStates: function () {

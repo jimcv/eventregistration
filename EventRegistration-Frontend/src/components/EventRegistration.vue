@@ -42,9 +42,9 @@
       </tr>
       <tr v-for="event in events" v-bind:key="event.name">
         <td>{{ event.name }}</td>
-        <td>{{ event.eventDate }}</td>
-        <td>{{ event.startTime }}</td>
-        <td>{{ event.endTime }}</td>
+        <td>{{ event.eventDate | formatDate }}</td>
+        <td>{{ event.startTime | formatTime }}</td>
+        <td>{{ event.endTime | formatTime }}</td>
         <!--<td>
           <button v-on:click="updateEvent(event.name)">Edit</button>
         </td>-->
@@ -84,6 +84,37 @@
       </tr>
     </table>
     <span v-if="errorEvent" style="color: red">{{ errorEvent }}</span>
+    <hr />
+
+    <h2>Registrations</h2>
+    <label
+      >Person:
+      <select v-model="selectedPerson">
+        <option disabled value="">Please select one</option>
+        <option v-for="person in persons">
+          {{ person.name }}
+        </option>
+      </select>
+    </label>
+    <label
+      >Event:
+      <select v-model="selectedEvent">
+        <option disabled value="">Please select one</option>
+        <option v-for="event in events">
+          {{ event.name }}
+        </option>
+      </select>
+    </label>
+    <button
+      v-bind:disabled="!selectedPerson || !selectedEvent"
+      @click="registerEvent(selectedPerson, selectedEvent)"
+    >
+      Register
+    </button>
+    <br />
+    <span v-if="errorRegistration" style="color: red">{{
+      errorRegistration
+    }}</span>
     <hr />
   </div>
 </template>
