@@ -54,8 +54,8 @@ export default {
       } else {
         this.$store.commit("logout");
       }
-      console.log(this.$store.getters.getCount);
-      console.log(this.$store.getters.getLoginStatus);
+      console.log(this.$store.state.a.count);
+      console.log(this.$store.state.b.isLoggedIn);
     }
   }
 };
