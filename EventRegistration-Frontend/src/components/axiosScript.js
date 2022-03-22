@@ -1,34 +1,31 @@
 import axios from "axios";
 
-const config = require("../../config");
+const CONFIG = require("../../config");
 
-const getBackendUrl = function() {
+const BACKEND_URL = function() {
   switch (process.env.NODE_ENV) {
     case "development":
       // use https if developing using hosted backend, else use http
-      if (config.dev.backendHost === "eventreg-backend-100.herokuapp.com") {
-        return "https://" + config.dev.backendHost + ":" + config.dev.backendPort;
+      if (CONFIG.dev.backendHost === "eventreg-backend-100.herokuapp.com") {
+        return "https://" + CONFIG.dev.backendHost + ":" + CONFIG.dev.backendPort;
       } else {
-        return "http://" + config.dev.backendHost + ":" + config.dev.backendPort;
+        return "http://" + CONFIG.dev.backendHost + ":" + CONFIG.dev.backendPort;
       }
     case "production":
-      return "https://" + config.build.backendHost + ":" + config.build.backendPort;
+      return "https://" + CONFIG.build.backendHost + ":" + CONFIG.build.backendPort;
   }
 };
 
-const getFrontendUrl = function() {
+const FRONTEND_URL = function() {
   switch (process.env.NODE_ENV) {
     case "development":
-      return "http://" + config.dev.host + ":" + config.dev.port;
+      return "http://" + CONFIG.dev.host + ":" + CONFIG.dev.port;
     case "production":
-      return "https://" + config.build.host + ":" + config.build.port;
+      return "https://" + CONFIG.build.host + ":" + CONFIG.build.port;
   }
 };
 
-const backendUrl = getBackendUrl();
-const frontendUrl = getFrontendUrl();
-
 export const AXIOS = axios.create({
-  baseURL: backendUrl,
-  headers: { "Access-Control-Allow-Origin": frontendUrl }
+  baseURL: BACKEND_URL(),
+  headers: { "Access-Control-Allow-Origin": FRONTEND_URL() }
 });
