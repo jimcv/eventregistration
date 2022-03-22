@@ -29,18 +29,35 @@
         >
       </li>
     </ul>
-    <b-button variant="success">Hello World!</b-button>
-    <b-button variant="outline-primary">Hello World!</b-button>
+    <router-link to="/app">
+      <b-button variant="success" v-bind:disabled="LOGIN_STATE.state.isLoggedIn"
+        >Log In Test
+      </b-button>
+    </router-link>
+    <b-button
+      variant="outline-primary"
+      @click="logout()"
+      v-bind:disabled="!LOGIN_STATE.state.isLoggedIn"
+      >Log Out Test
+    </b-button>
   </div>
 </template>
 
 <script>
+import { LOGIN_STATE } from "../common/StateScript";
+
 export default {
   name: "hello",
   data() {
     return {
       msg: "Welcome to Your Vue.js App",
+      LOGIN_STATE,
     };
+  },
+  methods: {
+    logout: function () {
+      LOGIN_STATE.commit("logout");
+    },
   },
 };
 </script>
