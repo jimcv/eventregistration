@@ -13,3 +13,19 @@ export const COUNT_STATE = new Vuex.Store({
     }
   }
 });
+
+export const LOGIN_STATE = new Vuex.Store({
+  state: {
+    isLoggedIn: false,
+    userType: "",
+    username: ""
+  },
+  mutations: {
+    login(state) {
+      state.isLoggedIn = true;
+    },
+    logout(state) {
+      state.isLoggedIn = false;
+    }
+  }
+});

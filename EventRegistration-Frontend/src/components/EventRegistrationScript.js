@@ -1,5 +1,5 @@
 import { AXIOS } from "../common/AxiosScript";
-import { COUNT_STATE } from "../common/StateScript";
+import { COUNT_STATE, LOGIN_STATE } from "../common/StateScript";
 
 function PersonDto(name) {
   this.name = name;
@@ -50,7 +50,13 @@ export default {
   methods: {
     createPerson: function(personName) {
       COUNT_STATE.commit("increment");
+      if (LOGIN_STATE.state.isLoggedIn === false) {
+        LOGIN_STATE.commit("login");
+      } else {
+        LOGIN_STATE.commit("logout");
+      }
       console.log(COUNT_STATE.state.count);
+      console.log(LOGIN_STATE.state.isLoggedIn);
     }
   }
 };
