@@ -1,5 +1,4 @@
 import { AXIOS } from "../common/AxiosScript";
-import { COUNT_STATE } from "../common/StateScript";
 
 function PersonDto(name) {
   this.name = name;
@@ -49,8 +48,14 @@ export default {
   },
   methods: {
     createPerson: function(personName) {
-      COUNT_STATE.commit("increment");
-      console.log(COUNT_STATE.state.count);
+      this.$store.commit("increment");
+      if (this.$store.getters.getLoginStatus === false) {
+        this.$store.commit("login");
+      } else {
+        this.$store.commit("logout");
+      }
+      console.log(this.$store.getters.getCount);
+      console.log(this.$store.getters.getLoginStatus);
     }
   }
 };
