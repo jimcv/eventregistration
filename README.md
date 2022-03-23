@@ -1,3 +1,4 @@
 # eventregistration
 ECSE321 tutorial - EventRegistration example
-Test merge
+
+Heroku Frontend: https://eventreg-frontend-100.herokuapp.com/
