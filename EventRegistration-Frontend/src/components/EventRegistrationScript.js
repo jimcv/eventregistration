@@ -122,7 +122,7 @@ export default {
     },
     testStates: function () {
       COUNT_STATE.commit("increment");
-      if (LOGIN_STATE.state.isLoggedIn === false) {
+      if (!LOGIN_STATE.state.isLoggedIn) {
         LOGIN_STATE.commit("login");
       } else {
         LOGIN_STATE.commit("logout");
